@@ -1,0 +1,175 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Dashboard — Mariam Abakar Adoum Mahamat{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+  <div class="container">
+
+    <!-- En-tête -->
+    <div class="dash-header reveal">
+      <div class="dash-header-left">
+        <div class="dash-avatar">{{ user.username|slice:":1"|upper }}</div>
+        <div>
+          <p class="dash-welcome">Bonjour 👋</p>
+          <h1>{{ user.get_full_name|default:user.username }}</h1>
+          <p class="dash-sub">Bienvenue dans votre espace d'administration</p>
+        </div>
+      </div>
+      <div class="dash-header-actions">
+        <a href="{% url 'index' %}" class="btn btn--outline btn--sm" target="_blank">
+          <i class="fas fa-eye"></i> Voir le site
+        </a>
+        <a href="/admin/" class="btn btn--outline btn--sm">
+          <i class="fas fa-sliders"></i> Admin Django
+        </a>
+        <a href="{% url 'logout' %}" class="btn btn--ghost btn--sm">
+          <i class="fas fa-right-from-bracket"></i> Déconnexion
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="dash-stats">
+      <div class="ds-card reveal">
+        <div class="ds-icon ds-icon--gold"><i class="fas fa-envelope"></i></div>
+        <div class="ds-body">
+          <p class="ds-num">{{ messages_recus.count }}</p>
+          <p class="ds-lbl">Messages reçus</p>
+        </div>
+        <div class="ds-trend">total</div>
+      </div>
+      <div class="ds-card reveal" data-delay="60">
+        <div class="ds-icon ds-icon--red"><i class="fas fa-envelope-open"></i></div>
+        <div class="ds-body">
+          <p class="ds-num">{{ unread_count }}</p>
+          <p class="ds-lbl">Non lus</p>
+        </div>
+        {% if unread_count > 0 %}<div class="ds-trend ds-trend--alert">nouveau</div>{% endif %}
+      </div>
+      <div class="ds-card reveal" data-delay="120">
+        <div class="ds-icon ds-icon--blue"><i class="fas fa-code"></i></div>
+        <div class="ds-body">
+          <p class="ds-num">5</p>
+          <p class="ds-lbl">Compétences(en cours d'amelioration)</p>
+        </div>
+        <div class="ds-trend">actives</div>
+      </div>
+      <div class="ds-card reveal" data-delay="180">
+        <div class="ds-icon ds-icon--green"><i class="fas fa-folder-open"></i></div>
+        <div class="ds-body">
+          <p class="ds-num">3</p>
+          <p class="ds-lbl">Projets</p>
+        </div>
+        <div class="ds-trend">publiés</div>
+      </div>
+    </div>
+
+    <div class="dash-body">
+      <!-- Colonne principale -->
+      <div class="dash-main">
+
+        <!-- Messages -->
+        <div class="dash-panel reveal">
+          <div class="dash-panel-header">
+            <h2><i class="fas fa-inbox"></i> Messages reçus
+              {% if unread_count > 0 %}<span class="badge-new">{{ unread_count }} non lu{{ unread_count|pluralize }}</span>{% endif %}
+            </h2>
+            <span class="panel-count">{{ messages_recus.count }} total</span>
+          </div>
+
+          {% if messages_recus %}
+          <div class="msg-list">
+            {% for msg in messages_recus %}
+            <div class="msg-card {% if not msg.lu %}msg-card--new{% endif %}">
+              {% if not msg.lu %}<div class="msg-new-dot"></div>{% endif %}
+              <div class="msg-top">
+                <div class="msg-avatar-wrap">
+                  <div class="msg-avatar">{{ msg.nom|slice:":1"|upper }}</div>
+                </div>
+                <div class="msg-meta">
+                  <p class="msg-name">{{ msg.nom }}{% if not msg.lu %} <span class="msg-new-badge">Nouveau</span>{% endif %}</p>
+                  <a href="mailto:{{ msg.email }}" class="msg-email">{{ msg.email }}</a>
+                </div>
+                <div class="msg-side">
+                  <span class="msg-date"><i class="fas fa-calendar"></i> {{ msg.created_at|date:"d/m/Y à H:i" }}</span>
+                  {% if not msg.lu %}
+                  <form method="POST" action="{% url 'mark_read' msg.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-mark-read" title="Marquer comme lu">
+                      <i class="fas fa-check-double"></i> Marquer lu
+                    </button>
+                  </form>
+                  {% else %}
+                  <span class="msg-read-label"><i class="fas fa-check-double"></i> Lu</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="msg-content">
+                <p class="msg-sujet"><i class="fas fa-tag"></i> {{ msg.sujet }}</p>
+                <p class="msg-body">{{ msg.message }}</p>
+              </div>
+              <div class="msg-actions">
+                <a href="mailto:{{ msg.email }}?subject=Re: {{ msg.sujet }}" class="msg-reply">
+                  <i class="fas fa-reply"></i> Répondre
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <div class="empty-icon"><i class="fas fa-inbox"></i></div>
+            <h3>Aucun message pour le moment</h3>
+            <p>Les messages envoyés depuis le formulaire de contact apparaîtront ici.</p>
+            <a href="{% url 'contact' %}" class="btn btn--outline btn--sm">Voir le formulaire</a>
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+
+      <!-- Colonne latérale -->
+      <div class="dash-sidebar">
+
+        <!-- Actions rapides -->
+        <div class="dash-panel reveal">
+          <div class="dash-panel-header"><h2><i class="fas fa-bolt"></i> Actions rapides</h2></div>
+          <div class="quick-actions">
+            <a href="{% url 'index' %}" target="_blank" class="qa-item">
+              <i class="fas fa-house"></i><span>Voir l'accueil</span><i class="fas fa-arrow-right qa-arrow"></i>
+            </a>
+            <a href="{% url 'index' %}#projets" target="_blank" class="qa-item">
+              <i class="fas fa-folder"></i><span>Mes projets</span><i class="fas fa-arrow-right qa-arrow"></i>
+            </a>
+            <a href="{% url 'index' %}#cv" target="_blank" class="qa-item">
+              <i class="fas fa-file-lines"></i><span>Mon CV</span><i class="fas fa-arrow-right qa-arrow"></i>
+            </a>
+            <a href="{% url 'contact' %}" target="_blank" class="qa-item">
+              <i class="fas fa-paper-plane"></i><span>Page contact</span><i class="fas fa-arrow-right qa-arrow"></i>
+            </a>
+            <a href="/admin/" class="qa-item">
+              <i class="fas fa-database"></i><span>Administration Django</span><i class="fas fa-arrow-right qa-arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profil rapide -->
+        <div class="dash-panel reveal">
+          <div class="dash-panel-header"><h2><i class="fas fa-user"></i> Mon Profil</h2></div>
+          <div class="profile-summary">
+            <div class="ps-avatar">{{ user.username|slice:":1"|upper }}</div>
+            <p class="ps-name">Mariam Abakar Adoum Mahamat</p>
+            <p class="ps-role">Développeuse Web · Étudiante GL</p>
+            <div class="ps-tags">
+              <span>Django</span><span>python</span><span>MySQL</span>
+            </div>
+            <div class="ps-status"><span class="dot-sm"></span> Disponible pour des projets</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /dash-body -->
+
+  </div>
+</section>
+{% endblock %}

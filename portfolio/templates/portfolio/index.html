@@ -1,0 +1,339 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ═══ HERO ═══ -->
+<section id="accueil" class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-inner container">
+    <div class="hero-left">
+      <div class="hero-tag reveal"><span class="dot"></span> Disponible pour stages &amp; collaborations</div>
+      <h1 class="hero-title">
+        <span class="hero-name reveal" data-delay="100">Mariam</span>
+        <em class="hero-surname reveal" data-delay="200">Abakar Adoum Mahamat</em>
+      </h1>
+      <p class="hero-role reveal" data-delay="300">
+        Développeuse Web &nbsp;<span class="role-dot">·</span>&nbsp; Étudiante en Génie Logiciel
+      </p>
+      <p class="hero-desc reveal" data-delay="380">
+        Passionnée par la création de solutions numériques, je construis des applications web modernes avec <strong>Python/Django</strong>, <strong>PHP</strong> et les technologies front-end. Actuellement en Niveau 2 à l'INSTA d'Abéché.
+      </p>
+      <div class="hero-actions reveal" data-delay="460">
+        <a href="#projets" class="btn btn--gold">Mes projets <i class="fas fa-arrow-right"></i></a>
+        <a href="{% url 'contact' %}" class="btn btn--outline">Me contacter</a>
+        <a href="{% static 'images/cv-mariam.pdf' %}" download class="btn btn--ghost"><i class="fas fa-download"></i> CV</a>
+      </div>
+      <div class="hero-socials reveal" data-delay="520">
+        <a href="mailto:mariamabakar054@gmail.com" class="hsocial" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="hsocial" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener" class="hsocial" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <span class="hsocial-sep"></span>
+        <span class="hsocial-mail">mariamabakar054@gmail.com</span>
+      </div>
+    </div>
+    <div class="hero-right reveal" data-delay="150">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring"></div>
+        <div class="hero-photo-frame">
+          <img src="{% static 'images/profile.jpg' %}" alt="Mariam Abakar Adoum Mahamat"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hero-photo-fallback"><i class="fas fa-user"></i></div>
+        </div>
+        <div class="hbadge hbadge--tl">
+          <i class="fas fa-code"></i>
+          <div><p class="hb-n">5+</p><p class="hb-l">Skills</p></div>
+        </div>
+        <div class="hbadge hbadge--br">
+          <i class="fas fa-star"></i>
+          <div><p class="hb-n">3 ans</p><p class="hb-l">d'études</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-cue">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- ═══ À PROPOS ═══ -->
+<section id="apropos" class="section about-sec">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-col reveal">
+        <div class="about-photo-outer">
+          <div class="about-photo-frame">
+            <img src="{% static 'images/profile.jpg' %}" alt="Mariam"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="about-photo-fallback"><i class="fas fa-user"></i></div>
+          </div>
+          <div class="about-photo-deco"></div>
+        </div>
+        <div class="about-vstat-list">
+          <div class="avstat"><span class="avs-n">3</span><span class="avs-l">Années d'études</span></div>
+          <div class="avstat-sep"></div>
+          <div class="avstat"><span class="avs-n">5+</span><span class="avs-l">Compétences</span></div>
+          <div class="avstat-sep"></div>
+          <div class="avstat"><span class="avs-n">3</span><span class="avs-l">Langues</span></div>
+          <div class="avstat-sep"></div>
+          <div class="avstat"><span class="avs-n">1</span><span class="avs-l">Stage</span></div>
+        </div>
+      </div>
+      <div class="about-text-col">
+        <p class="section-label reveal">01 · À Propos de Moi</p>
+        <h2 class="section-title reveal">Une développeuse<br><em>curieuse &amp; motivée</em></h2>
+        <div class="about-bio">
+          <p class="reveal">Je m'appelle <strong>Mariam Abakar Adoum Mahamat</strong>, étudiante en <strong>Génie Logiciel</strong> actuellement (Niveau 3) à l'Institut National de Science et Technique d'Abéché, au Tchad.</p>
+          <p class="reveal">Passionnée par la technologie, j'ai choisi le génie logiciel pour transformer mes idées en solutions concrètes. Je crois fermement que le code peut améliorer la vie des gens et résoudre des problèmes du quotidien.</p>
+          <p class="reveal">En dehors de mes études, je m'investis dans des projets personnels pour approfondir mes compétences en <strong>développement web full-stack</strong> avec Django</p>
+        </div>
+        <div class="about-info-grid reveal">
+          <div class="ainfo"><i class="fas fa-map-marker-alt"></i><div><span class="ai-l">Localisation</span><span class="ai-v">Abéché, Tchad</span></div></div>
+          <div class="ainfo"><i class="fas fa-graduation-cap"></i><div><span class="ai-l">Niveau</span><span class="ai-v">Niveau 3 — Génie Logiciel</span></div></div>
+          <div class="ainfo"><i class="fas fa-university"></i><div><span class="ai-l">Institution</span><span class="ai-v">INSTA, Abéché</span></div></div>
+          <div class="ainfo"><i class="fas fa-envelope"></i><div><span class="ai-l">Email</span><span class="ai-v"><a href="mailto:mariamabakar054@gmail.com">mariamabakar054@gmail.com</a></span></div></div>
+          <div class="ainfo"><i class="fas fa-language"></i><div><span class="ai-l">Langues</span><span class="ai-v">Français · Arabe · Anglais</span></div></div>
+          <div class="ainfo"><i class="fas fa-circle-dot"></i><div><span class="ai-l">Statut</span><span class="ai-v ai-open"><span class="dot-sm"></span> Disponible</span></div></div>
+        </div>
+        <div class="about-actions reveal">
+          <a href="{% url 'contact' %}" class="btn btn--gold">Me contacter <i class="fas fa-arrow-right"></i></a>
+          <a href="{% static 'images/cv-mariam.pdf' %}" download class="btn btn--outline"><i class="fas fa-download"></i> Télécharger le CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPÉTENCES ═══ -->
+<section id="competences" class="section skills-sec">
+  <div class="container">
+    <p class="section-label reveal">02 · Compétences</p>
+    <h2 class="section-title reveal">Ce que je <em>maîtrise</em></h2>
+    <p class="section-sub reveal">Des technologies front-end aux bases de données — mon arsenal technique actuel.</p>
+    <div class="skills-grid-4 reveal">
+      <div class="skill-cat">
+        <div class="skill-cat-head"><div class="sc-icon"><i class="fas fa-palette"></i></div><h3>Frontend</h3></div>
+        <div class="stags">
+          <div class="stag"><span>HTML5</span><div class="stag-bar"><div class="stag-fill" data-w="90%"></div></div></div>
+          <div class="stag"><span>CSS3</span><div class="stag-bar"><div class="stag-fill" data-w="85%"></div></div></div>
+          <div class="stag"><span>JavaScript(en cours d'apprentissage)</span><div class="stag-bar"><div class="stag-fill" data-w="65%"></div></div></div>
+          <div class="stag"><span>Design Responsive</span><div class="stag-bar"><div class="stag-fill" data-w="80%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-head"><div class="sc-icon"><i class="fas fa-server"></i></div><h3>Backend</h3></div>
+        <div class="stags">
+          <div class="stag"><span>Python</span><div class="stag-bar"><div class="stag-fill" data-w="60%"></div></div></div>
+          <div class="stag"><span>Django</span><div class="stag-bar"><div class="stag-fill" data-w="55%"></div></div></div>
+          <div class="stag"><span>PHP(en cours d'apprentissage)</span><div class="stag-bar"><div class="stag-fill" data-w="65%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-head"><div class="sc-icon"><i class="fas fa-database"></i></div><h3>Base de données</h3></div>
+        <div class="stags">
+          <div class="stag"><span>MySQL</span><div class="stag-bar"><div class="stag-fill" data-w="65%"></div></div></div>
+          <div class="stag"><span>SQLite</span><div class="stag-bar"><div class="stag-fill" data-w="60%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-head"><div class="sc-icon"><i class="fas fa-tools"></i></div><h3>Outils</h3></div>
+        <div class="stags">
+          <div class="stag"><span>Git / GitHub</span><div class="stag-bar"><div class="stag-fill" data-w="55%"></div></div></div>
+          <div class="stag"><span>VS Code</span><div class="stag-bar"><div class="stag-fill" data-w="80%"></div></div></div>
+          <div class="stag"><span>XAMPP / WAMP</span><div class="stag-bar"><div class="stag-fill" data-w="75%"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="soft-skills reveal">
+      <h3>Qualités personnelles</h3>
+      <div class="soft-tags">
+        <span>Rigoureuse</span><span>Curieuse</span><span>Autonome</span>
+        <span>Esprit d'équipe</span><span>Adaptable</span><span>Créative</span>
+        <span>Persévérante</span><span>Ponctuelle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJETS ═══ -->
+<section id="projets" class="section projects-sec">
+  <div class="container">
+    <p class="section-label reveal">03 · Projets</p>
+    <h2 class="section-title reveal">Mes <em>Réalisations</em></h2>
+    <p class="section-sub reveal">Projets académiques et personnels développés durant mon parcours.</p>
+    <div class="projects-grid">
+
+      <article class="project-card reveal">
+        <div class="project-img proj-color-1">
+          <i class="fas fa-globe project-icon"></i>
+          <div class="project-links">
+            <a href="#" class="plink"><i class="fas fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/mariamabakar054/" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="ptags"><span>Django</span><span>Python</span><span>SQLite</span></div>
+          <h3>Portfolio Personnel</h3>
+          <p>Site web portfolio dynamique avec Django 4.2 — système de connexion, dashboard admin, formulaire de contact avec sauvegarde en base de données et design responsive.</p>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-delay="120">
+        <div class="project-img proj-color-2">
+          <i class="fas fa-store project-icon"></i>
+          <div class="project-links">
+            <a href="#" class="plink"><i class="fas fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="ptags"><span>PHP</span><span>MySQL</span><span>CSS3</span></div>
+          <h3>Site Vitrine (INSTA)</h3>
+          <p>Site vitrine complet pour INSTA locale — interfaces modernes, gestion de contenu PHP/MySQL, développé en  équipe, actuellement non disponible dans github .</p>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-delay="240">
+        <div class="project-img proj-color-3">
+          <i class="fas fa-graduation-cap project-icon"></i>
+          <div class="project-links">
+            <a href="#" class="plink"><i class="fas fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/mariamabakar054/universite-django" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="ptags"><span>Python</span><span>Django</span></div>
+          <h3>Université-django</h3>
+          <p>Application de gestion des cours et des enseignants avec interface responsive.</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="projects-more reveal">
+      <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn--outline">
+        <i class="fab fa-github"></i> Voir tous mes projets sur GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CV ═══ -->
+<section id="cv" class="section cv-sec">
+  <div class="container">
+    <p class="section-label reveal">04 · Parcours</p>
+    <h2 class="section-title reveal">Mon <em>Curriculum Vitae</em></h2>
+    <p class="section-sub reveal">Mon parcours académique, mes expériences et mes compétences en un coup d'œil.</p>
+    <div class="cv-layout">
+      <div class="cv-col">
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-graduation-cap"></i> Formation</h3>
+          <div class="cv-timeline">
+            {% for f in formations %}
+            <div class="cv-entry">
+              <div class="cv-entry-dot"></div>
+              <div class="cv-entry-content">
+                <span class="cv-period">{{ f.date_debut }}{% if f.date_fin %} — {{ f.date_fin }}{% endif %}</span>
+                <h4>{{ f.titre }}</h4>
+                <p class="cv-orga">{{ f.etablissement }}</p>
+                {% if f.description %}<p class="cv-detail">{{ f.description }}</p>{% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-briefcase"></i> Expérience</h3>
+          <div class="cv-timeline">
+            {% for e in experiences %}
+            <div class="cv-entry">
+              <div class="cv-entry-dot"></div>
+              <div class="cv-entry-content">
+                <span class="cv-period">{{ e.date_debut }}</span>
+                <h4>{{ e.titre }}</h4>
+                <p class="cv-orga">{{ e.etablissement }}</p>
+                {% if e.description %}<p class="cv-detail">{{ e.description }}</p>{% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-globe"></i> Langues</h3>
+          <div class="lang-list">
+            {% for l in langues %}
+            <div class="lang-item">
+              <div class="lang-head"><span class="lang-name">{{ l.nom }}</span><span class="lang-lvl">{{ l.niveau }}</span></div>
+              <div class="lang-track"><div class="lang-fill" data-w="{{ l.pct }}%"></div></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-heart"></i> Centres d'intérêt</h3>
+          <div class="interests">
+            <div class="interest"><i class="fas fa-laptop-code"></i><span>Développement Web</span></div>
+            <div class="interest"><i class="fas fa-book-open"></i><span>Lecture &amp; E-learning</span></div>
+            <div class="interest"><i class="fas fa-lightbulb"></i><span>Innovation &amp; Tech</span></div>
+            <div class="interest"><i class="fas fa-users"></i><span>Projets collaboratifs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-col">
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-code"></i> Compétences Techniques</h3>
+          <div class="skills-bars">
+            {% for c in competences %}
+            <div class="sbar-item">
+              <div class="sbar-info">
+                <span>{% if c.nom %}{{ c.nom }}{% else %}{{ c }}{% endif %}</span>
+                <span>{% if c.niveau %}{{ c.niveau }}{% endif %}%</span>
+              </div>
+              <div class="sbar-track">
+                <div class="sbar-fill" data-w="{% if c.niveau %}{{ c.niveau }}{% else %}60{% endif %}%"></div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="cv-block reveal">
+          <h3 class="cv-block-title"><i class="fas fa-id-card"></i> Informations Personnelles</h3>
+          <div class="pinfo-list">
+            <div class="pinfo"><span class="pi-l">Nom complet</span><span class="pi-v">Mariam Abakar Adoum Mahamat</span></div>
+            <div class="pinfo"><span class="pi-l">Nationalité</span><span class="pi-v">Tchadienne</span></div>
+            <div class="pinfo"><span class="pi-l">Localisation</span><span class="pi-v">Abéché, Tchad</span></div>
+            <div class="pinfo"><span class="pi-l">Email</span><span class="pi-v"><a href="mailto:mariamabakar054@gmail.com">mariamabakar054@gmail.com</a></span></div>
+            <div class="pinfo"><span class="pi-l">Statut</span><span class="pi-v pi-open"><span class="dot-sm"></span> Disponible</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cv-download reveal">
+      <a href="{% static 'images/cv-mariam.pdf' %}" download class="btn btn--gold btn--lg">
+        <i class="fas fa-file-pdf"></i> Télécharger le CV complet (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-icon-wrap"><i class="fas fa-handshake"></i></div>
+      <h2>Travaillons <em>ensemble</em></h2>
+      <p>Vous avez un projet, une opportunité de stage ou envie d'échanger ? Je suis disponible et motivée.</p>
+      <div class="cta-actions">
+        <a href="{% url 'contact' %}" class="btn btn--light">Démarrer une conversation <i class="fas fa-arrow-right"></i></a>
+        <a href="mailto:mariamabakar054@gmail.com" class="btn btn--outline-light"><i class="fas fa-envelope"></i> Email direct</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

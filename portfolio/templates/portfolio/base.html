@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mariam Abakar Adoum Mahamat— Portfolio{% endblock %}</title>
+  <meta name="description" content="Portfolio de Mariam Abakar Adoum, développeuse web et étudiante en Génie Logiciel à l'INSTA d'Abéché, Tchad.">
+  <meta name="keywords" content="Mariam Abakar Adoum, portfolio, développeuse web, Django, PHP, Tchad, Abéché">
+  <meta name="author" content="Mariam Abakar Adoum">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mariam Abakar Adoum — Portfolio">
+  <meta property="og:description" content="Développeuse web & étudiante en Génie Logiciel — Abéché, Tchad">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ── Barre de progression de lecture ── -->
+  <div class="read-progress" id="readProgress"></div>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" id="nav">
+    <a href="{% url 'index' %}" class="nav-logo">
+      <span class="nl-initials">MAAM</span>
+      <span class="nl-full">Mariam Aakar Adoum Mahamat</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'index' %}#accueil"     class="nav-link">Accueil</a></li>
+      <li><a href="{% url 'index' %}#apropos"     class="nav-link">À Propos</a></li>
+      <li><a href="{% url 'index' %}#competences" class="nav-link">Compétences</a></li>
+      <li><a href="{% url 'index' %}#projets"     class="nav-link">Projets</a></li>
+      <li><a href="{% url 'index' %}#cv"          class="nav-link">CV</a></li>
+      <li><a href="{% url 'contact' %}" class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'dashboard' %}" class="nav-cta"><i class="fas fa-gauge-high"></i> Dashboard</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}" class="nav-cta"><i class="fas fa-lock"></i> Connexion</a></li>
+      {% endif %}
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── Messages Django ── -->
+  {% if messages %}
+  <div class="flash-container" id="flashContainer">
+    {% for msg in messages %}
+    <div class="flash flash--{{ msg.tags }}">
+      <i class="fas {% if msg.tags == 'success' %}fa-circle-check{% else %}fa-circle-exclamation{% endif %}"></i>
+      <span>{{ msg }}</span>
+      <button class="flash-close" onclick="this.parentElement.remove()"><i class="fas fa-xmark"></i></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-name">Mariam Abakar Adoum Mahamat</p>
+          <p class="footer-tagline">Développeuse Web &amp; Étudiante en Génie Logiciel</p>
+          <p class="footer-loc"><i class="fas fa-map-marker-alt"></i> Abéché, Tchad &nbsp;·&nbsp; <i class="fas fa-university"></i> INSTA</p>
+        </div>
+        <div class="footer-nav">
+          <p class="footer-nav-title">Navigation</p>
+          <ul>
+            <li><a href="{% url 'index' %}#accueil">Accueil</a></li>
+            <li><a href="{% url 'index' %}#apropos">À Propos</a></li>
+            <li><a href="{% url 'index' %}#competences">Compétences</a></li>
+            <li><a href="{% url 'index' %}#projets">Projets</a></li>
+            <li><a href="{% url 'index' %}#cv">CV</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-nav-title">Contact rapide</p>
+          <a href="mailto:mariamabakar054@gmail.com" class="footer-email">
+            <i class="fas fa-envelope"></i> mariamabakar054@gmail.com
+          </a>
+          <div class="footer-socials">
+            <a href="mailto:mariamabakar054@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mariam Abakar Adoum Mahamat. Tous droits réservés.</p>
+        <a href="#accueil" class="back-to-top" id="backToTop" title="Retour en haut">
+          <i class="fas fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

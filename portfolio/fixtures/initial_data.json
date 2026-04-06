@@ -1,0 +1,28 @@
+[
+  {"model": "portfolio.competence", "pk": 1, "fields": {"nom": "HTML / CSS",   "niveau": 85, "categorie": "frontend", "ordre": 1}},
+  {"model": "portfolio.competence", "pk": 2, "fields": {"nom": "JavaScript",   "niveau": 65, "categorie": "frontend", "ordre": 2}},
+  {"model": "portfolio.competence", "pk": 3, "fields": {"nom": "Python",       "niveau": 60, "categorie": "backend",  "ordre": 3}},
+  {"model": "portfolio.competence", "pk": 4, "fields": {"nom": "Django",       "niveau": 55, "categorie": "backend",  "ordre": 4}},
+  {"model": "portfolio.competence", "pk": 5, "fields": {"nom": "PHP",          "niveau": 65, "categorie": "backend",  "ordre": 5}},
+  {"model": "portfolio.competence", "pk": 6, "fields": {"nom": "MySQL",        "niveau": 65, "categorie": "database", "ordre": 6}},
+
+  {"model": "portfolio.formation", "pk": 1, "fields": {
+    "type_entree": "formation",
+    "titre": "Niveau 2 — Génie Logiciel",
+    "etablissement": "Institut National de Science et Technique d'Abéché",
+    "date_debut": "2023", "date_fin": "En cours",
+    "description": "", "ordre": 1
+  }},
+  {"model": "portfolio.formation", "pk": 2, "fields": {
+    "type_entree": "experience",
+    "titre": "Stagiaire Développeuse Web",
+    "etablissement": "Expérience Tech, Abéché",
+    "date_debut": "45 jours", "date_fin": "",
+    "description": "Développement d'un site vitrine en PHP/MySQL, conception d'interfaces utilisateur modernes, gestion de l'entreprise.",
+    "ordre": 1
+  }},
+
+  {"model": "portfolio.langue", "pk": 1, "fields": {"nom": "Français", "niveau": "Courant",      "pct": 90, "ordre": 1}},
+  {"model": "portfolio.langue", "pk": 2, "fields": {"nom": "Arabe",    "niveau": "Courant",       "pct": 90, "ordre": 2}},
+  {"model": "portfolio.langue", "pk": 3, "fields": {"nom": "Anglais",  "niveau": "Intermédiaire", "pct": 55, "ordre": 3}}
+]

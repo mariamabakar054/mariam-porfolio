@@ -1,0 +1,64 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Connexion — Portfolio{% endblock %}
+
+{% block content %}
+<section class="login-sec">
+  <div class="login-wrap">
+    <div class="login-deco">
+      <div class="login-deco-orb"></div>
+      <div class="login-deco-content">
+        <p class="ld-monogram">MAAM</p>
+        <p class="ld-name">Mariam Abakar Adoum Mahamat</p>
+        <p class="ld-role">Développeuse Web · Génie Logiciel</p>
+        <div class="ld-tags">
+          <span>Django</span><span>Python</span><span>PHP (en cours)</span>
+          <span>MySQL</span><span>CSS</span><span>JS (en cours)</span>
+        </div>
+      </div>
+    </div>
+    <div class="login-box">
+      <a href="{% url 'index' %}" class="login-back-link"><i class="fas fa-arrow-left"></i> Retour au site</a>
+      <div class="login-header">
+        <div class="login-avatar"><i class="fas fa-user-shield"></i></div>
+        <h1>Espace privé</h1>
+        <p>Connectez-vous pour accéder au tableau de bord.</p>
+      </div>
+      {% if error %}
+      <div class="alert alert--error"><i class="fas fa-circle-exclamation"></i> {{ error }}</div>
+      {% endif %}
+      <form method="POST" action="{% url 'login' %}" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <div class="input-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" name="username" placeholder="mariam" required autocomplete="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="pwd-toggle" onclick="togglePwd(this)">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--gold btn--full">
+          Se connecter <i class="fas fa-right-to-bracket"></i>
+        </button>
+      </form>
+      <p class="login-note"><i class="fas fa-shield-halved"></i> Zone sécurisée — Accès réservé à l'administratrice</p>
+    </div>
+  </div>
+</section>
+<script>
+function togglePwd(btn) {
+  const inp = btn.closest('.input-icon').querySelector('input');
+  const ico = btn.querySelector('i');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  ico.className = inp.type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+}
+</script>
+{% endblock %}

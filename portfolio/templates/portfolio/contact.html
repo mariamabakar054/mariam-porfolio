@@ -1,0 +1,231 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block title %}Contact — Mariam Abakar Adoum Mahamat{% endblock %}
+
+{% block content %}
+
+<!-- ═══ EN-TÊTE PAGE ═══ -->
+<section class="page-hero">
+  <div class="page-hero-bg"><div class="hero-orb hero-orb--1"></div><div class="hero-grid"></div></div>
+  <div class="container">
+    <p class="section-label reveal">Contact</p>
+    <h1 class="page-hero-title reveal">Parlons de <em>votre projet</em></h1>
+    <p class="page-hero-sub reveal">Je suis disponible pour des collaborations, stages, ou simplement pour échanger. Réponse sous 48h.</p>
+    <div class="page-hero-badges reveal">
+      <span class="phbadge"><i class="fas fa-clock"></i> Réponse sous 48h</span>
+      <span class="phbadge"><span class="dot-sm"></span> Disponible maintenant</span>
+      <span class="phbadge"><i class="fas fa-map-marker-alt"></i> Abéché, Tchad (GMT+1)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTENU PRINCIPAL ═══ -->
+<section class="section contact-sec">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- ── COLONNE GAUCHE : Infos ── -->
+      <div class="contact-left">
+
+        <!-- Bloc coordonnées -->
+        <div class="contact-info-block reveal">
+          <h2>Coordonnées</h2>
+          <p>N'hésitez pas à me contacter directement par email ou via les réseaux ci-dessous.</p>
+          <div class="contact-cards">
+            <a href="mailto:mariamabakar054@gmail.com" class="ccard">
+              <div class="ccard-icon"><i class="fas fa-envelope"></i></div>
+              <div class="ccard-body">
+                <p class="ccard-lbl">Email principal</p>
+                <p class="ccard-val">mariamabakar054@gmail.com</p>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square ccard-arrow"></i>
+            </a>
+            <div class="ccard">
+              <div class="ccard-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="ccard-body">
+                <p class="ccard-lbl">Localisation</p>
+                <p class="ccard-val">Abéché, Province du Ouaddaï, Tchad</p>
+              </div>
+            </div>
+            <div class="ccard">
+              <div class="ccard-icon"><i class="fas fa-university"></i></div>
+              <div class="ccard-body">
+                <p class="ccard-lbl">Institution</p>
+                <p class="ccard-val">Institut National de Science et Technique d'Abéché (INSTA)</p>
+              </div>
+            </div>
+            <div class="ccard">
+              <div class="ccard-icon"><i class="fas fa-clock"></i></div>
+              <div class="ccard-body">
+                <p class="ccard-lbl">Disponibilité</p>
+                <p class="ccard-val"><span class="dot-sm"></span> Disponible — Réponse sous 48h</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div class="contact-socials-block reveal">
+          <h3>Retrouvez-moi sur</h3>
+          <div class="social-cards">
+            <a href="https://github.com/" target="_blank" rel="noopener" class="social-card">
+              <i class="fab fa-github"></i>
+              <div><p class="sc-name">GitHub</p><p class="sc-sub">Voir mes projets</p></div>
+              <i class="fas fa-arrow-up-right-from-square sc-arrow"></i>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-card">
+              <i class="fab fa-linkedin-in"></i>
+              <div><p class="sc-name">LinkedIn</p><p class="sc-sub">Mon profil professionnel</p></div>
+              <i class="fas fa-arrow-up-right-from-square sc-arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Ce que je recherche -->
+        <div class="contact-looking-block reveal">
+          <h3><i class="fas fa-search"></i> Ce que je recherche</h3>
+          <ul class="looking-list">
+            <li><i class="fas fa-check"></i> Stage en développement web</li>
+            <li><i class="fas fa-check"></i> Projets collaboratifs open-source</li>
+            <li><i class="fas fa-check"></i> Opportunités de formation</li>
+            <li><i class="fas fa-check"></i> Échanges avec d'autres développeurs</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ── COLONNE DROITE : Formulaire ── -->
+      <div class="contact-right reveal" data-delay="150">
+        <div class="contact-form-card">
+          <div class="form-card-header">
+            <h2>Envoyez-moi un message</h2>
+            <p>Tous les champs marqués <span class="req-star">*</span> sont obligatoires.</p>
+          </div>
+
+          <form method="POST" action="{% url 'contact' %}" novalidate id="contactForm">
+            {% csrf_token %}
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="{{ form.nom.id_for_label }}">{{ form.nom.label }} <span class="req-star">*</span></label>
+                {{ form.nom }}
+                {% if form.nom.errors %}<p class="field-error"><i class="fas fa-triangle-exclamation"></i> {{ form.nom.errors|join:", " }}</p>{% endif %}
+              </div>
+              <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }} <span class="req-star">*</span></label>
+                {{ form.email }}
+                {% if form.email.errors %}<p class="field-error"><i class="fas fa-triangle-exclamation"></i> {{ form.email.errors|join:", " }}</p>{% endif %}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.sujet.id_for_label }}">{{ form.sujet.label }} <span class="req-star">*</span></label>
+              {{ form.sujet }}
+              {% if form.sujet.errors %}<p class="field-error"><i class="fas fa-triangle-exclamation"></i> {{ form.sujet.errors|join:", " }}</p>{% endif %}
+            </div>
+
+            <!-- Sélecteur de type de message -->
+            <div class="form-group">
+              <label>Type de message</label>
+              <div class="msg-type-selector">
+                <button type="button" class="mtype active" data-type="Stage">💼 Stage</button>
+                <button type="button" class="mtype" data-type="Collaboration">🤝 Collaboration</button>
+                <button type="button" class="mtype" data-type="Question">❓ Question</button>
+                <button type="button" class="mtype" data-type="Autre">📌 Autre</button>
+              </div>
+              <input type="hidden" name="type_message" id="typeMessage" value="Stage">
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.message.id_for_label }}">{{ form.message.label }} <span class="req-star">*</span></label>
+              {{ form.message }}
+              <span class="char-counter" id="charCounter">0 / 500</span>
+              {% if form.message.errors %}<p class="field-error"><i class="fas fa-triangle-exclamation"></i> {{ form.message.errors|join:", " }}</p>{% endif %}
+            </div>
+
+            <button type="submit" class="btn btn--gold btn--full btn--send" id="sendBtn">
+              <span class="btn-text">Envoyer le message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- /contact-grid -->
+
+    <!-- ═══ FAQ ═══ -->
+    <div class="faq-section reveal">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Êtes-vous disponible pour un stage ?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Oui, je suis actuellement disponible pour des opportunités de stage en développement web. Je suis ouverte aux stages à Abéché, dans d'autres villes du Tchad, ou en télétravail.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Quelles technologies maîtrisez-vous ?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Je maîtrise HTML, CSS, JavaScript, Python et Django pour le développement web. En base de données, j'utilise MySQL. J'utilise aussi Git/GitHub pour la gestion de versions.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Dans combien de temps répondez-vous ?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Je réponds généralement dans les 48 heures. Pour les demandes urgentes, vous pouvez me contacter directement par email à mariamabakar054@gmail.com.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Pouvez-vous travailler en anglais ?</span>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="faq-a">
+            <p>Mon niveau d'anglais est intermédiaire. Je peux communiquer et lire de la documentation technique en anglais, mais je préfère travailler en français ou en arabe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Type de message
+document.querySelectorAll('.mtype').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.mtype').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('typeMessage').value = btn.dataset.type;
+  });
+});
+
+// Compteur de caractères
+const msgArea = document.querySelector('textarea[name="message"]');
+const counter = document.getElementById('charCounter');
+if (msgArea && counter) {
+  msgArea.addEventListener('input', () => {
+    const len = msgArea.value.length;
+    counter.textContent = len + ' / 500';
+    counter.style.color = len > 450 ? '#ef4444' : '';
+  });
+}
+
+// FAQ accordion
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+{% endblock %}
